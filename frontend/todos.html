@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	  <meta charset="utf-8">
+	  <meta name="viewport" content="width=device-width">
+	  <title>Todo App</title>
+	  <link rel="stylesheet" href="style.css" type="text/css" />
+	  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+	</head>
+	
+	<body id="light">
+	  <script src="script.js">
+    </script>
+	  <div id="main-div">
+		<h1>Todo Application</h1>
+		<div id="stuff">
+			<input type="text" placeholder="Search todos" class="search-bar" onkeyup="search()"></input>
+	    <input type="text" placeholder="Add a todo" class="input-add-todo"></input>
+
+	    <button onclick="addToDo()" class="addToDo">Add Todo</button>
+		<button onclick="toggleTheme()" class="themeButton">
+			<i id="themeIcon" style="font-size:24px" class="fa">&#xf186;</i> 
+		  </button>
+		  
+	</div>
+		<div id="todoList"></div>
+	  </div>
+	  <div class="logout">
+		<i class="fa fa-sign-out" style="font-size:36px" id="logoutButton" onclick="logOut()"></i>
+	 
+<div class="hide">Logout</div></div>
+	</body>
+	
+</html>

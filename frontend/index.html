@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Taskify Frontend</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <script type="module" src="./index.js"></script>
+    <script type="module" src="./afterLogin.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <label>Email</label
+    ><input type="email" placeholder="Enter ur email" id="email" /><br />
+    <br /><label>Password</label><input type="password" id="password" /><br />
+    <button onclick="evaluateLogin()" id="loginButton">Login</button><br />
+    <!-- <script></script> -->
+    <script type="module">
+      import { evaluateLogin } from "./index.js";
+      import { renderPostLogin } from "./afterLogin.js";
+
+      window.onload = () => {
+        let token = localStorage.getItem("token");
+
+        if (token) {
+          document.body.innerHTML = "";
+          renderPostLogin();
+        } else {
+          window.evaluateLogin = evaluateLogin;
+        }
+      };
+    </script>
+    <p>Forgot password? <a href="./signup.html">Signup</a></p>
+  </body>
+</html>
