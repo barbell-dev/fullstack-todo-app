@@ -9,12 +9,7 @@ dotenv.config();
 
 const app = express();
 const port = process.env.PORT || 8080;
-app.use(
-  cors({
-    origin: ["https://fullstack-todo-app-two.vercel.app"],
-    credentials: true,
-  })
-);
+app.use(cors());
 app.use(express.json());
 // app.use(router);
 app.get("/", router.get("/"));
