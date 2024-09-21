@@ -20,7 +20,8 @@ export async function evaluateLogin() {
     },
   });
   if (response.data.message == "Invalid credentials") {
-    log("Invalid credentials");
+    alert("Invalid credentials");
+    return;
   }
   log(response);
   // log("here");
