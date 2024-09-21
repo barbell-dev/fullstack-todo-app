@@ -13,7 +13,6 @@ app.use(
   cors({
     origin: ["https://fullstack-todo-app-two.vercel.app"],
     credentials: true,
-    acc,
   })
 );
 app.use(express.json());
