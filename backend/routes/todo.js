@@ -107,7 +107,7 @@ todoRouter.put("/todos", adminMiddleware, async (req, res) => {
   // log("Updated");
 });
 
-todoRouter.delete("/api/deleteTodo", adminMiddleware, async (req, res) => {
+todoRouter.delete("/deleteTodo", adminMiddleware, async (req, res) => {
   // Implement delete todo logic
   try {
     let token = req.headers.token;

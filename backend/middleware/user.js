@@ -30,7 +30,7 @@ async function userMiddleware(req, res, next) {
       });
       log(`Unknown error occured, ${e}`);
     }
-  } else if (!req.body.email) {
+  } else if (!req.body.email || !req.body.password) {
     //Directrly trying to go to /todos url without logging in should throw an error.
     res.json({ message: "Please login first" });
   } else {
