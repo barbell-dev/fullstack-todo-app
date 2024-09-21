@@ -151,7 +151,7 @@ todoRouter.get("/todos", adminMiddleware, async (req, res) => {
     todos.push(todosObjects[i].description);
   }
   res.json({ todos: todos });
-  // return;
+  return;
 });
 
 todoRouter.get("/:id", adminMiddleware, (req, res) => {
