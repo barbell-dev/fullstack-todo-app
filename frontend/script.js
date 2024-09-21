@@ -17,6 +17,8 @@ window.onload = function () {
     .get("https://fullstack-todo-app-4beh.onrender.com/todos", {
       headers: {
         token: token,
+        "Content-Type": "application/json",
+        "Content-Type": "application/json",
       },
     })
     .then((response) => {
@@ -89,6 +91,7 @@ async function displayTodo() {
     {
       headers: {
         token: token,
+        "Content-Type": "application/json",
       },
     }
   );
@@ -150,6 +153,7 @@ async function deleteTodo(index) {
     .delete("/api/deleteTodo", {
       headers: {
         token: token,
+        "Content-Type": "application/json",
       },
       data: {
         index: cnt,
@@ -213,6 +217,7 @@ function editTodo(index) {
           {
             headers: {
               token: token,
+              "Content-Type": "application/json",
             },
           }
         )
@@ -280,6 +285,7 @@ async function addToDo() {
       {
         headers: {
           token: token,
+          "Content-Type": "application/json",
         },
       }
     )
