@@ -18,10 +18,12 @@ app.put("/todos", todoRouter.put("/todos"));
 app.post("/addTodo", todoRouter.post("/addTodo"));
 app.post("/login", router.post("/login"));
 app.post("/signup", router.post("/signup"));
-app.delete("/api/deleteTodo", todoRouter.delete("/api/deleteTodo"));
+app.delete("/deleteTodo", todoRouter.delete("/deleteTodo"));
 // app.post("/todos")
 //  start writing your routes here
 
 app.listen(port, () =>
-  console.log(`server is running at http://localhost:${port}`)
+  console.log(
+    `server is running at https://fullstack-todo-app-4beh.onrender.com:${port}`
+  )
 );
