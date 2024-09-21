@@ -19,6 +19,9 @@ export async function evaluateLogin() {
       password: password,
     },
   });
+  if (response.data.message == "Invalid credentials") {
+    log("Invalid credentials");
+  }
   log(response);
   // log("here");
   if (response.data.token) {

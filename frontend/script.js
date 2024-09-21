@@ -92,6 +92,7 @@ async function displayTodo() {
       },
     }
   );
+  console.log(response.data.message);
   todoList = response.data.todos;
   log(todoList);
   // let todos = "";
