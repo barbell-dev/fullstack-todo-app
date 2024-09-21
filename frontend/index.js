@@ -3,10 +3,8 @@ import { renderPostLogin } from "./afterLogin.js";
 export async function evaluateLogin() {
   // document.body.removeChild(document.querySelector("button"));
   // renderPostLogin();
-  log("inRPL");
   let email = document.querySelector("#email").value;
   let password = document.querySelector("#password").value;
-  log(email + "kek");
   // log(username, password);
   let response = await axios({
     method: "post",
@@ -19,11 +17,6 @@ export async function evaluateLogin() {
       password: password,
     },
   });
-  if (response.data.message == "Invalid credentials") {
-    alert("Invalid credentials");
-    return;
-  }
-  log(response);
   // log("here");
   if (response.data.token) {
     log("here");
