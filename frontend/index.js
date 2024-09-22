@@ -10,7 +10,6 @@ export async function evaluateLogin() {
     method: "post",
     headers: {
       token: localStorage.getItem("token"),
-      "Content-Type": "application/json",
     },
     url: `https://fullstack-todo-app-4beh.onrender.com/login`,
     data: {
