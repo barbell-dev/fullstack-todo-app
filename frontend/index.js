@@ -19,6 +19,7 @@ export async function evaluateLogin() {
   });
   // log("here");
   if (response.data.token != null) {
+    log(response.data.token);
     log("here");
     localStorage.setItem("token", response.data.token);
     document.body.innerHTML = "";
