@@ -67,7 +67,7 @@ router.post("/login", userMiddleware, async (req, res) => {
   // res.send("You've logged in");
 
   const response = await UserModel.findOne({ email: req.body.email });
-  log(password);
+  // log(password);
   const passwordMatch = bcrypt.compare(password, response.password);
   if (!passwordMatch) {
     res.json({ token: null });
@@ -79,8 +79,13 @@ router.post("/login", userMiddleware, async (req, res) => {
   });
   console.log(token);
   const check = jwt.verify(token, process.env.JWT_SECRET);
-  console.log(check);
-  res.json({ token: token });
+  // console.log(check);
+  if (check) {
+    res.json({ token: token });
+    return;
+  }
+  res.json({ token: null });
+  return;
 });
 
 router.get("/todos", userMiddleware, (req, res) => {
