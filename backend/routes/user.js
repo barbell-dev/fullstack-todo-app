@@ -62,9 +62,17 @@ router.post("/signup", async (req, res) => {
   }
 });
 
-router.post("/login", userMiddleware, (req, res) => {
+router.post("/login", userMiddleware, async (req, res) => {
   // Implement user login logic
   // res.send("You've logged in");
+
+  const response = await UserModel.findOne({ email: req.body.email });
+  log(password);
+  const passwordMatch = bcrypt.compare(password, response.password);
+  if (!passwordMatch) {
+    res.json({ token: null });
+    return;
+  }
 
   token = jwt.sign({ id: req.body.id }, process.env.JWT_SECRET, {
     noTimestamp: true,
