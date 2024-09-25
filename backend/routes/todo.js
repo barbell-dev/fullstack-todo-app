@@ -60,7 +60,9 @@ todoRouter.post("/addTodo", async (req, res) => {
 
 todoRouter.put("/todos", adminMiddleware, async (req, res) => {
   // Implement update todo  logic
+  log("here");
   try {
+    console.log("here");
     let token = req.headers.token;
     let userData = jwt.verify(token, process.env.JWT_SECRET);
     let userId = userData.id;
