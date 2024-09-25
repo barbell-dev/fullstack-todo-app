@@ -2,7 +2,7 @@ const dotenv = require("dotenv");
 let log = console.log;
 
 const bcrypt = require("bcrypt");
-const { UserModel } = require("../db");
+const { UserModel } = require("../db/index");
 const jwt = require("jsonwebtoken");
 async function userMiddleware(req, res, next) {
   // Implement user auth logic

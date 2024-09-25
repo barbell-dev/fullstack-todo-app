@@ -12,6 +12,7 @@ const dotenv = require("dotenv");
 dotenv.config();
 const connectionString = process.env.CONNECTION_STRING;
 // log(connectionString);
+// log(connectionString);
 const mongoose = require("mongoose");
 const ObjectId = mongoose.Schema.ObjectId;
 //Schema has structure , Collection is table and model basically applies the schema rules on to the collection to facilitate the use of built in functions

@@ -68,7 +68,11 @@ router.post("/login", userMiddleware, async (req, res) => {
 
   const response = await UserModel.findOne({ email: req.body.email });
   // log(password);
-  const passwordMatch = bcrypt.compare(req.body.password, response.password);
+  const passwordMatch = await bcrypt.compare(
+    req.body.password,
+    response.password
+  );
+  console.log(passwordMatch);
   if (!passwordMatch) {
     res.json({ token: null });
     return;
