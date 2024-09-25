@@ -11,7 +11,7 @@ export async function evaluateLogin() {
     headers: {
       token: localStorage.getItem("token"),
     },
-    url: `https://https://fullstack-todo-app-4beh.onrender.com/login`,
+    url: `https://fullstack-todo-app-4beh.onrender.com/login`,
     data: {
       email: email,
       password: password,
@@ -40,7 +40,7 @@ export async function evaluateSignup() {
   try {
     let response = await axios({
       method: "post",
-      url: "https://https://fullstack-todo-app-4beh.onrender.com/signup",
+      url: "https://fullstack-todo-app-4beh.onrender.com/signup",
       data: {
         email: email,
         name: name,

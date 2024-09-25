@@ -14,7 +14,7 @@ if (!token) {
 }
 window.onload = function () {
   axios
-    .get("https://https://fullstack-todo-app-4beh.onrender.com/todos", {
+    .get("https://fullstack-todo-app-4beh.onrender.com/todos", {
       headers: {
         token: token,
         "Content-Type": "application/json",
@@ -87,7 +87,7 @@ function logOut() {
 }
 async function displayTodo() {
   let response = await axios.get(
-    "https://https://fullstack-todo-app-4beh.onrender.com/todos",
+    "https://fullstack-todo-app-4beh.onrender.com/todos",
     {
       headers: {
         token: token,
@@ -208,7 +208,7 @@ function editTodo(index) {
       // location.reload();
       axios
         .put(
-          "https://https://fullstack-todo-app-4beh.onrender.com/todos",
+          "https://fullstack-todo-app-4beh.onrender.com/todos",
           {
             index: cnt,
             oldTodo: initialText,
@@ -277,7 +277,7 @@ async function addToDo() {
   let token = localStorage.getItem("token");
   await axios
     .post(
-      "https://https://fullstack-todo-app-4beh.onrender.com/addTodo",
+      "https://fullstack-todo-app-4beh.onrender.com/addTodo",
       { description: todo },
       // JSON.stringify({
       //   description: todo,
