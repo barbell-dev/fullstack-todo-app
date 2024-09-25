@@ -183,6 +183,7 @@ function editTodo(index) {
   //   location.reload();
   // }
   console.log(index);
+  log(todoList + "kek");
   let initialText = todoList[index];
   let cnt = 0;
   for (let i = 0; i < index; i++) {
