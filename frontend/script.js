@@ -1,8 +1,6 @@
 //  start from here
 // const { response } = require("express");
 
-import { response } from "express";
-
 // const { response } = require("express");
 
 // const { response } = require("express");
