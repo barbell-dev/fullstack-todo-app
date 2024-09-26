@@ -1,8 +1,6 @@
 //  start from here
 // const { response } = require("express");
 
-import { resolve } from "path";
-
 // const { response } = require("express");
 
 // const { response } = require("express");
@@ -164,7 +162,7 @@ async function deleteTodo(index) {
     })
     .then((response) => {
       log(response.data.message);
-      resolve();
+      return;
     })
     .then(location.reload());
 }
