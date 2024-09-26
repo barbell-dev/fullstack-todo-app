@@ -109,7 +109,7 @@ todoRouter.put("/todos", adminMiddleware, async (req, res) => {
   // log("Updated");
 });
 
-todoRouter.delete("/deleteTodo", adminMiddleware, async (req, res) => {
+todoRouter.delete("/todo", adminMiddleware, async (req, res) => {
   // Implement delete todo logic
   try {
     let token = req.headers.token;
@@ -119,7 +119,6 @@ todoRouter.delete("/deleteTodo", adminMiddleware, async (req, res) => {
     let userId = userData.id;
     let todosObjects = await TodoModel.find({
       userId: userId,
-      description: todo,
     });
     let todoToBeDeleted = todosObjects[index];
     await TodoModel.deleteOne(todoToBeDeleted)

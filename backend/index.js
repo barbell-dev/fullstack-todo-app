@@ -9,7 +9,7 @@ dotenv.config();
 
 const app = express();
 const port = process.env.PORT || 8080;
-// console.log(port);
+console.log(process.env.PORT);
 app.use(cors());
 app.use(express.json());
 // app.use(router);
@@ -19,12 +19,8 @@ app.put("/todos", todoRouter.put("/todos"));
 app.post("/addTodo", todoRouter.post("/addTodo"));
 app.post("/login", router.post("/login"));
 app.post("/signup", router.post("/signup"));
-app.delete("/deleteTodo", todoRouter.delete("/deleteTodo"));
+app.delete("/todo", todoRouter.delete("/todo"));
 // app.post("/todos")
 //  start writing your routes here
 
-app.listen(port, () =>
-  console.log(
-    `server is running at https://fullstack-todo-app-4beh.onrender.com:${port}`
-  )
-);
+app.listen(port, () => console.log(`server is running at localhost:${port}`));

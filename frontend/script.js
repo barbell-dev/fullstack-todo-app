@@ -29,7 +29,7 @@ window.onload = function () {
         if (!response.data.todoList == []) {
           todoList = response.data.todoList;
         } else {
-          log("Todo list is empty.");
+          // log("Todo list is empty.");
         }
         applySavedTheme();
         displayTodo();
@@ -150,13 +150,13 @@ async function deleteTodo(index) {
     }
   }
   await axios
-    .delete("/api/deleteTodo", {
+    .delete("https://fullstack-todo-app-4beh.onrender.com/todo", {
       headers: {
         token: token,
         "Content-Type": "application/json",
       },
       data: {
-        index: cnt,
+        index: index,
         description: text,
       },
     })
@@ -201,13 +201,13 @@ function editTodo(index) {
   node.children[2].innerHTML = "Cancel";
   node.children[2].className = "cancel";
   if ((node.children[1].innerHTML = "Save")) {
-    node.children[1].onclick = () => {
+    node.children[1].onclick = async () => {
       // for (let i = 0; i < 3432342434; i++) {}
       log("here");
       // todoList[index] = node.children[0].value;
       // localStorage.setItem("todoList", JSON.stringify(todoList));
       // location.reload();
-      axios
+      await axios
         .put(
           "https://fullstack-todo-app-4beh.onrender.com/todos",
           {
@@ -222,11 +222,10 @@ function editTodo(index) {
             },
           }
         )
-        .then(location.reload())
         .catch(() => {
           console.log("Error.");
         });
-
+      location.reload();
       node.children[1].innerHTML = "Edit";
       node.children[2].innerHTML = "Delete";
       node.children[0].disabled = true;
