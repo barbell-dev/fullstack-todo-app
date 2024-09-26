@@ -1,6 +1,8 @@
 //  start from here
 // const { response } = require("express");
 
+import { response } from "express";
+
 // const { response } = require("express");
 
 // const { response } = require("express");
@@ -162,9 +164,11 @@ async function deleteTodo(index) {
     })
     .then((response) => {
       log(response.data.message);
-      return;
+      return response;
     })
-    .then(location.reload());
+    .then((response) => {
+      location.reload();
+    });
 }
 
 function activateEditListener() {
