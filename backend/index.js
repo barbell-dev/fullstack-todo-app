@@ -10,7 +10,11 @@ dotenv.config();
 const app = express();
 const port = process.env.PORT || 8080;
 console.log(process.env.PORT);
-app.use(cors());
+app.use(
+  cors({
+    origin: ["https://wrapitupasap.netlify.com"],
+  })
+);
 app.use(express.json());
 // app.use(router);
 app.get("/", router.get("/"));
