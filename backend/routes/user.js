@@ -33,6 +33,7 @@ router.post("/signup", async (req, res) => {
       res.json({
         message:
           "User with given email already exists.Try with a different email.",
+        status: 403,
       });
       return;
     } else {

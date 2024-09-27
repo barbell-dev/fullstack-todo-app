@@ -54,6 +54,10 @@ export async function evaluateSignup() {
       document.body.innerHTML = "";
 
       renderPostLogin();
+    } else {
+      alert(
+        "User with given email already exists. Try with a different email."
+      );
     }
   } catch (e) {
     log(`Failed signup. Error-> ${e}`);

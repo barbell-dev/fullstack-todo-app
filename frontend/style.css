@@ -6,7 +6,24 @@ body#light {
   background-color: white;
   color: black;
 }
+.login-creds,
+.signup-creds {
+  display: grid;
+  /* smargin: auto; */
 
+  max-width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 15%;
+}
+#loginButton,
+#signupButton {
+  margin-left: 20%;
+  width: 50%;
+  color: white;
+  font-weight: 900;
+  background: linear-gradient(to right, blue, cyan);
+}
 body#dark {
   background-color: black;
   color: green;

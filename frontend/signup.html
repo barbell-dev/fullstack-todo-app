@@ -1,6 +1,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <link rel="stylesheet" href="./style.css" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
   </head>
@@ -8,12 +9,20 @@
     <script type="module" src="./index.js"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-    <label>Email</label
-    ><input type="email" placeholder="Enter ur email" id="signup-email" /><br />
-    <label>Name</label><input type="text" id="signup-name" /> <br /><label
-      >Password</label
-    ><input type="password" id="signup-password" /><br />
-    <button onclick="evaluateSignup()" id="signupButton">Signup</button>
+    <div class="signup-creds">
+      <div>
+        <label>Email</label
+        ><input type="email" placeholder="Enter ur email" id="signup-email" />
+      </div>
+      <br />
+      <div><label>Name</label><input type="text" id="signup-name" /></div>
+      <br />
+      <div>
+        <label>Password</label
+        ><input type="password" id="signup-password" /><br />
+      </div>
+      <button onclick="evaluateSignup()" id="signupButton">Signup</button>
+    </div>
     <!-- hi -->
     <script type="module">
       import { evaluateSignup } from "./index.js";
