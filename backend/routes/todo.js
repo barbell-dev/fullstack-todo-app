@@ -57,7 +57,30 @@ todoRouter.post("/addTodo", async (req, res) => {
   }
   // console.log(userData);
 });
-
+todoRouter.put("/markTodoAsDone", adminMiddleware, async (req, res) => {
+  try {
+    let token = req.headers.token;
+    let userData = jwt.verify(token, process.env.JWT_SECRET);
+    let userId = userData.id;
+    let index = req.body.index;
+    let userTodos = await TodoModel.find({ userId: userId });
+    if (userTodos[index].done) {
+      await TodoModel.updateOne(userTodos[index], {
+        $set: { done: false },
+      });
+      return res.json({ message: `Todo status updated` });
+    } else {
+      await TodoModel.updateOne(userTodos[index], {
+        $set: { done: true },
+      });
+      return res.json({ message: `Todo status updated` });
+      // return;
+    }
+  } catch (e) {
+    res.json({ message: `Unknown error occured ${e}` });
+    return;
+  }
+});
 todoRouter.put("/todos", adminMiddleware, async (req, res) => {
   // Implement update todo  logic
   log("here");
@@ -148,10 +171,12 @@ todoRouter.get("/todos", adminMiddleware, async (req, res) => {
   // console.log(todosObjects);
   // log("here after adding");
   let todos = [];
+  let todoStatus = [];
   for (let i = 0; i < todosObjects.length; i++) {
     todos.push(todosObjects[i].description);
+    todoStatus.push(todosObjects[i].done);
   }
-  res.json({ todos: todos });
+  res.json({ todos: todos, todoStatus: todoStatus });
   return;
 });
 

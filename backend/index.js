@@ -20,6 +20,7 @@ app.use(express.json());
 app.get("/", router.get("/"));
 app.get("/todos", todoRouter.get("/todos"));
 app.put("/todos", todoRouter.put("/todos"));
+app.put("/markTodoAsDone", todoRouter.put("/markTodoAsDone"));
 app.post("/addTodo", todoRouter.post("/addTodo"));
 app.post("/login", router.post("/login"));
 app.post("/signup", router.post("/signup"));

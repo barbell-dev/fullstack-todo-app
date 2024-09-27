@@ -29,6 +29,10 @@ body#dark {
   color: green;
 }
 
+.markedAsDone {
+  text-decoration: line-through;
+  /* opacity/; */
+}
 h1 {
   text-align: center;
 }
@@ -61,7 +65,7 @@ h1 {
 }
 
 .new-element {
-  display: grid;
+  display: flex;
   grid-gap: 10px;
   grid-template-columns: 1fr auto auto;
   grid-auto-rows: auto;
@@ -70,7 +74,7 @@ h1 {
 }
 
 textarea {
-  width: 100%;
+  width: 80%;
   resize: none;
   height: auto;
   min-height: 50px;
@@ -82,9 +86,13 @@ textarea {
 }
 
 .edit,
-.delete {
+.delete,
+.save,
+.cancel,
+.markAsDoneButton {
   border-radius: 5px;
   padding: 5px;
+  width: 10%;
 }
 
 button {

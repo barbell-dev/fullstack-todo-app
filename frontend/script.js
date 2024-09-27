@@ -1,6 +1,3 @@
-//  start from here
-// const { response } = require("express");
-
 // const { response } = require("express");
 
 // const { response } = require("express");
@@ -97,6 +94,7 @@ async function displayTodo() {
   );
   console.log(response.data.message);
   todoList = response.data.todos;
+  let todoStatus = response.data.todoStatus;
   log(todoList);
   // let todos = "";
   for (let i = 0; i < todoList.length; i++) {
@@ -106,27 +104,48 @@ async function displayTodo() {
     smallDiv.className = "new-element";
     smallDiv.id = todoList[i];
     let textarea = document.createElement("textarea");
-    textarea.innerHTML = todoList[i];
-    textarea.disabled = true;
     let editButton = document.createElement("button");
     editButton.className = "edit";
     editButton.innerText = "Edit";
+    textarea.innerHTML = todoList[i];
+    textarea.disabled = true;
+    if (todoStatus[i]) {
+      textarea.classList.add("markedAsDone");
+
+      editButton.disabled = true;
+    } else {
+      editButton.disabled = false;
+    }
+    textarea.style.backgroundColor = "biege";
+
     let deleteButton = document.createElement("button");
     deleteButton.className = "delete";
     let dbId = "delete" + todoList[i];
     deleteButton.id = dbId;
     deleteButton.innerText = "Delete";
+    let markAsDoneButton = document.createElement("button");
+    markAsDoneButton.innerHTML = "Mark as done";
+    markAsDoneButton.className = "markAsDoneButton";
     smallDiv.appendChild(textarea);
     smallDiv.appendChild(editButton);
     smallDiv.appendChild(deleteButton);
+    smallDiv.appendChild(markAsDoneButton);
     document.querySelector("#todoList").appendChild(smallDiv);
     // console.log(document.querySelector("#todoList"));
   }
   // document.querySelector("#todoList").innerHTML = todos;
   activateEditListener();
   activateDeleteListener();
+  activateMarkAsDoneListener();
 }
-
+function activateMarkAsDoneListener() {
+  let markAsDoneButtons = document.querySelectorAll(".markAsDoneButton");
+  markAsDoneButtons.forEach((mb, i) => {
+    mb.addEventListener("click", () => {
+      markAsDone(i);
+    });
+  });
+}
 function activateDeleteListener() {
   let deleteButtons = document.querySelectorAll(".delete");
   deleteButtons.forEach((db, i) => {
@@ -136,7 +155,30 @@ function activateDeleteListener() {
     });
   });
 }
+async function markAsDone(index) {
+  let textAreas = document.querySelectorAll("textarea");
+  let todo = textAreas[index];
+  todo.classList.toggle("markedAsDone");
+  await axios
+    .put(
+      "https://fullstack-todo-app-4beh.onrender.com/markTodoAsDone",
+      {
+        index: index,
+      },
 
+      {
+        headers: {
+          token: token,
+          "Content-Type": "application/json",
+        },
+      }
+    )
+    .then((response) => {
+      log(response.data);
+
+      location.reload();
+    });
+}
 async function deleteTodo(index) {
   // todoList.splice(index, 1);
   // localStorage.setItem("todoList", JSON.stringify(todoList));
@@ -179,12 +221,6 @@ function activateEditListener() {
 }
 
 function editTodo(index) {
-  // let newName = prompt("Enter new name for todo", todoList[index]);
-  // if (newName) {
-  //   todoList[index] = newName;
-  //   localStorage.setItem("todoList", JSON.stringify(todoList));
-  //   location.reload();
-  // }
   console.log(index);
   log(todoList + "kek");
   let initialText = todoList[index];
@@ -197,19 +233,28 @@ function editTodo(index) {
   let nodes = document.querySelectorAll(".new-element");
   let node = nodes[index];
   console.log(initialText);
-  // console.log(node.children[0]);
+
+  // Store the original state
+  const originalState = {
+    text: node.children[0].value,
+    editButton: node.children[1].cloneNode(true),
+    deleteButton: node.children[2].cloneNode(true),
+  };
+
+  // Temporarily remove the delete event listener
+  const oldDeleteButton = node.children[2];
+  const newDeleteButton = oldDeleteButton.cloneNode(true);
+  node.replaceChild(newDeleteButton, oldDeleteButton);
+
   node.children[0].disabled = false;
   node.children[1].innerHTML = "Save";
   node.children[1].className = "save";
   node.children[2].innerHTML = "Cancel";
   node.children[2].className = "cancel";
-  if ((node.children[1].innerHTML = "Save")) {
+
+  if (node.children[1].innerHTML === "Save") {
     node.children[1].onclick = async () => {
-      // for (let i = 0; i < 3432342434; i++) {}
       log("here");
-      // todoList[index] = node.children[0].value;
-      // localStorage.setItem("todoList", JSON.stringify(todoList));
-      // location.reload();
       await axios
         .put(
           "https://fullstack-todo-app-4beh.onrender.com/todos",
@@ -229,20 +274,20 @@ function editTodo(index) {
           console.log("Error.");
         });
       location.reload();
-      node.children[1].innerHTML = "Edit";
-      node.children[2].innerHTML = "Delete";
-      node.children[0].disabled = true;
     };
-    node.children[2].onclick = () => {
-      node.children[1].innerHTML = "Edit";
-      node.children[2].innerHTML = "Delete";
-      // todoList[index] = initialText;
-      // localStorage.setItem("todoList", JSON.stringify(todoList));
 
-      // location.reload();
+    node.children[2].onclick = () => {
+      // Restore the original state
+      node.children[0].value = originalState.text;
+      node.children[0].disabled = true;
+      node.replaceChild(originalState.editButton, node.children[1]);
+      node.replaceChild(originalState.deleteButton, newDeleteButton);
+
+      // Re-activate the delete listener
+      activateEditListener();
+      activateDeleteListener();
     };
   }
-  // if(node.chi)
 }
 
 async function addToDo() {
@@ -309,10 +354,12 @@ function search() {
       nodes[i].children[0].style.display = "none";
       nodes[i].children[1].style.display = "none";
       nodes[i].children[2].style.display = "none";
+      nodes[i].children[3].style.display = "none";
     } else {
       nodes[i].children[0].style.display = "";
       nodes[i].children[1].style.display = "";
       nodes[i].children[2].style.display = "";
+      nodes[i].children[3].style.display = "";
     }
   }
 }
