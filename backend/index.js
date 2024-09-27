@@ -12,7 +12,7 @@ const port = process.env.PORT || 8080;
 console.log(process.env.PORT);
 app.use(
   cors({
-    origin: ["https://wrapitupasap.netlify.com"],
+    origin: ["https://wrapitupasap.netlify.app"],
   })
 );
 app.use(express.json());
