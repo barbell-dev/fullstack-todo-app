@@ -13,7 +13,6 @@ body {
   min-height: 100vh;
 }
 
-/* Login and Signup Styles */
 .login-creds,
 .signup-creds {
   background-color: #ffffff;
