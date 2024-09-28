@@ -38,6 +38,10 @@
           document.body.innerHTML = "";
           renderPostLogin();
         } else {
+          let fn = setInterval(async () => {
+            await axios.get("https://fullstack-todo-app-4beh.onrender.com/");
+          }, 1000);
+          clearInterval(fn);
           window.evaluateLogin = evaluateLogin;
         }
       };

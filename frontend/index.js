@@ -3,6 +3,7 @@ import { renderPostLogin } from "./afterLogin.js";
 export async function evaluateLogin() {
   // document.body.removeChild(document.querySelector("button"));
   // renderPostLogin();
+
   let email = document.querySelector("#email").value;
   let password = document.querySelector("#password").value;
   // log(username, password);
