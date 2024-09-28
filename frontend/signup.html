@@ -9,26 +9,33 @@
     <script type="module" src="./index.js"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-    <div class="signup-creds">
-      <div>
-        <label>Email</label
-        ><input type="email" placeholder="Enter your email" id="signup-email" />
+    <div class="full">
+      <header id="heading">WRAPITUP</header>
+      <div class="signup-creds">
+        <div>
+          <label>Email</label
+          ><input
+            type="email"
+            placeholder="Enter your email"
+            id="signup-email"
+          />
+        </div>
+        <br />
+        <div>
+          <label>Name</label
+          ><input type="text" placeholder="Enter your name" id="signup-name" />
+        </div>
+        <br />
+        <div>
+          <label>Password</label
+          ><input
+            type="password"
+            id="signup-password"
+            placeholder="Enter your password"
+          /><br />
+        </div>
+        <button onclick="evaluateSignup()" id="signupButton">Signup</button>
       </div>
-      <br />
-      <div>
-        <label>Name</label
-        ><input type="text" placeholder="Enter your name" id="signup-name" />
-      </div>
-      <br />
-      <div>
-        <label>Password</label
-        ><input
-          type="password"
-          id="signup-password"
-          placeholder="Enter your password"
-        /><br />
-      </div>
-      <button onclick="evaluateSignup()" id="signupButton">Signup</button>
     </div>
     <!-- hi -->
     <script type="module">
