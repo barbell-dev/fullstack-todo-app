@@ -52,8 +52,8 @@
           console.log("here");
           let fn = setInterval(async () => {
             await axios.get("https://fullstack-todo-app-4beh.onrender.com/");
-          }, 10000);
-          clearInterval(fn);
+          }, 1000);
+          setTimeout(clearInterval(fn), 3000);
           window.evaluateLogin = evaluateLogin;
         }
       };
