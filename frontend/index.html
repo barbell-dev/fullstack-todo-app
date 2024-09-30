@@ -49,9 +49,10 @@
           document.body.innerHTML = "";
           renderPostLogin();
         } else {
+          console.log("here");
           let fn = setInterval(async () => {
             await axios.get("https://fullstack-todo-app-4beh.onrender.com/");
-          }, 1000);
+          }, 10000);
           clearInterval(fn);
           window.evaluateLogin = evaluateLogin;
         }
